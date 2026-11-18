@@ -1,0 +1,4 @@
+# Add this under the flutter: section of your pubspec.yaml.
+flutter:
+  assets:
+    - assets/
