@@ -5,7 +5,6 @@ void main() => runApp(MaterialApp(
         appBar: AppBar(
           title: const Text("Custom buttons"),
         ),
-        // Part 3: each button keeps its own selected state.
         body: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +31,6 @@ class SelectableButton extends StatefulWidget {
 }
 
 class _SelectableButtonState extends State<SelectableButton> {
-  // The only state: is the button selected or not.
   bool isSelected = false;
 
   String get label => isSelected ? "Selected" : "Not selected";
@@ -40,7 +38,6 @@ class _SelectableButtonState extends State<SelectableButton> {
   Color? get backgroundColor => isSelected ? Colors.blue[500] : Colors.blue[50];
 
   void _onPressed() {
-    // setState tells Flutter to rebuild this widget with the new value.
     setState(() {
       isSelected = !isSelected;
     });
@@ -48,7 +45,6 @@ class _SelectableButtonState extends State<SelectableButton> {
 
   @override
   Widget build(BuildContext context) {
-    // SizedBox forces the button to a fixed size (400 x 100).
     return SizedBox(
       width: 400,
       height: 100,
