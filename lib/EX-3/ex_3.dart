@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 List<String> images = [
-  "EX-3/assets/bird.jpg",
-  "EX-3/assets/bird2.jpg",
-  "EX-3/assets/insect.jpg",
-  "EX-3/assets/girl.jpg",
-  "EX-3/assets/man.jpg",
+  "lib/EX-3/assets/bird.jpg",
+  "lib/EX-3/assets/bird2.jpg",
+  "lib/EX-3/assets/insect.jpg",
+  "lib/EX-3/assets/girl.jpg",
+  "lib/EX-3/assets/man.jpg",
 ];
 
 void main() => runApp(const MaterialApp(

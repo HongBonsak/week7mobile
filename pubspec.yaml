@@ -60,7 +60,7 @@ flutter:
 
   # Images for EX-3. The folder is listed once, so every image inside loads.
   assets:
-    - EX-3/assets/
+    - lib/EX-3/assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

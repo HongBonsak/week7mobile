@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 void main() => runApp(MaterialApp(
       home: Scaffold(
@@ -7,81 +7,61 @@ void main() => runApp(MaterialApp(
           backgroundColor: Colors.blue,
           title: const Text("Favorite cards"),
         ),
-        body: const Column(
+        body: Column(
           children: [
-            FavoriteCard(title: "title", description: "description", isFavorite: true),
-            FavoriteCard(title: "title", description: "description"),
-            FavoriteCard(title: "title", description: "description", isFavorite: true),
+            FavCard(title: "Title",des: "Description",isFav: true,),
+            FavCard(title: "Title",des: "Description",isFav: false,),
+            FavCard(title: "Title",des: "Description",isFav: true,),
           ],
         ),
       ),
     ));
 
-class FavoriteCard extends StatefulWidget {
+class FavCard extends StatefulWidget {
   final String title;
-  final String description;
-  // Initial value only. The live value is kept in the State object.
-  final bool isFavorite;
-
-  const FavoriteCard({
-    super.key,
-    required this.title,
-    required this.description,
-    this.isFavorite = false,
-  });
+  final String des;
+  final bool isFav;
+  const FavCard({super.key,required this.title,required this.des,required this.isFav});
 
   @override
-  State<FavoriteCard> createState() => _FavoriteCardState();
+  State<FavCard> createState() => FavCardState();
 }
 
-class _FavoriteCardState extends State<FavoriteCard> {
-  late bool _isFavorite;
-
-  @override
-  void initState() {
+class FavCardState extends State<FavCard> {
+  late bool isfaved;
+  void initState(){
     super.initState();
-    _isFavorite = widget.isFavorite;
+    isfaved = widget.isFav;
   }
 
-  void _toggleFavorite() {
+  toggle(){
     setState(() {
-      _isFavorite = !_isFavorite;
+      isfaved = !isfaved;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.grey, width: 1)),
+      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(
+          color: Colors.grey,
+          width: 1,
+        ))
       ),
       child: Row(
         children: [
-          // Expanded makes the column take all the space left of the icon.
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.title,
-                  style: TextStyle(
-                    color: Colors.blue[500],
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(widget.description),
+                Text(widget.title),
+                Text(widget.des),
               ],
             ),
           ),
-          IconButton(
-            onPressed: _toggleFavorite,
-            icon: Icon(
-              _isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: _isFavorite ? Colors.red : Colors.grey,
-            ),
-          ),
+
+          IconButton(onPressed:toggle, icon: !isfaved ? Icon(Icons.favorite_outline):Icon(Icons.favorite,color: Colors.red[500],)),
         ],
       ),
     );
